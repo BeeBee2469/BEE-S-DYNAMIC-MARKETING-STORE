@@ -1,4 +1,4 @@
-:root {
+    :root {
     --primary: #07073a;
     --dark: #0f172a;
     --light: #f8fafc;
@@ -19,28 +19,52 @@ body {
     overflow-x: hidden;
 }
 
-/* Navbar */
+/* --- NAVBAR FIXED --- */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.5rem 10%;
+    padding: 1rem 5%; /* Reduced padding so buttons don't get pushed off */
     position: fixed;
     width: 100%;
     z-index: 1000;
     backdrop-filter: blur(10px);
+    background: rgba(15, 23, 42, 0.7); /* Dark semi-transparent background */
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.logo { font-size: 1.5rem; letter-spacing: 2px; }
-.logo b { color: var(--primary); }
+.logo { font-size: 1.5rem; letter-spacing: 2px; flex-shrink: 0; }
+.logo b { color: var(--accent); }
 
-.nav-links { display: flex; list-style: none; }
-.nav-links li { margin: 0 20px; }
-.nav-links a { text-decoration: none; color: white; transition: 0.3s; font-weight: 500; }
-.nav-links a:hover { color: var(--primary); }
+.nav-links { 
+    display: flex; 
+    list-style: none; 
+    gap: 8px; /* Fixed small gap between buttons */
+    flex-wrap: wrap; /* This allows "Contact" to wrap if screen is too small */
+    justify-content: flex-end;
+}
 
-/* Hero Section */
+.nav-links li { margin: 0; } /* Removed the 20px margin that caused the gaps */
+
+.nav-links a { 
+    text-decoration: none; 
+    color: white; 
+    background-color: var(--primary); 
+    padding: 8px 12px; 
+    border-radius: 6px; 
+    font-size: 0.85rem; 
+    font-weight: 500;
+    transition: 0.3s;
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.nav-links a:hover { 
+    background-color: var(--accent); 
+    transform: translateY(-2px); 
+}
+
+/* --- HERO SECTION --- */
 .hero {
     height: 100vh;
     background: linear-gradient(45deg, rgba(15,23,42,0.9), rgba(99,102,241,0.3)), 
@@ -51,10 +75,11 @@ body {
     align-items: center;
     justify-content: center;
     text-align: center;
+    padding: 0 20px;
 }
 
-.hero-content h1 { font-size: 4rem; margin-bottom: 1rem; }
-.hero-content span { color: var(--primary); }
+.hero-content h1 { font-size: clamp(2.5rem, 8vw, 4rem); margin-bottom: 1rem; }
+.hero-content span { color: var(--accent); }
 .hero-content p { font-size: 1.2rem; max-width: 600px; margin-bottom: 2rem; opacity: 0.8; }
 
 .btn-primary {
@@ -63,20 +88,20 @@ body {
     color: white;
     text-decoration: none;
     border-radius: 30px;
-    margin-right: 15px;
     transition: 0.3s;
+    display: inline-block;
 }
 
-.btn-primary:hover { background: #4f46e5; transform: translateY(-3px); }
+.btn-primary:hover { background: var(--accent); transform: translateY(-3px); }
 
-/* Product Grid */
-.products { padding: 5rem 10%; }
+/* --- PRODUCT GRID --- */
+.products { padding: 5rem 5%; }
 .section-title { text-align: center; margin-bottom: 3rem; font-size: 2.5rem; }
 
 .product-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
 }
 
 .product-card {
@@ -90,15 +115,16 @@ body {
 .product-card:hover { transform: translateY(-10px); background: rgba(255,255,255,0.15); }
 
 .product-img {
-    height: 250px;
+    height: 200px;
     border-radius: 15px;
+    background-color: #334155;
     background-size: cover;
     background-position: center;
     margin-bottom: 15px;
 }
 
-.product-info h3 { margin-bottom: 10px; }
-.product-info p { color: var(--primary); font-weight: bold; font-size: 1.2rem; }
+.product-info h3 { margin-bottom: 10px; font-size: 1.1rem; }
+.product-info p { color: var(--accent); font-weight: bold; font-size: 1.2rem; }
 
 .add-to-cart {
     width: 100%;
@@ -113,33 +139,11 @@ body {
     transition: 0.3s;
 }
 
-
 .add-to-cart:hover { background: var(--primary); color: white; }
 
-.about-page { background-color: blue; }
-.contact-page { background-color: blue; }
-
-.nav-button:hover {
-  background-color: #0056b3; /* Darkens when you hover */
-           }
-    .nav-menu {
-  display: flex;          /* Lines buttons up in a row */
-  flex-wrap: wrap;       /* IMPORTANT: Allows buttons to move to a new line if they don't fit */
-  justify-content: center; /* Centers the buttons on the screen */
-  gap: 10px;             /* This controls the space between buttons (Change this number!) */
-  padding: 10px;
-}
-
-.nav-button {
-  text-decoration: none;
-  color: white;
-  background-color: #007BFF;
-  padding: 8px 15px;     /* Reduced padding to make buttons smaller */
-  border-radius: 8px;
-  display: inline-block;
-  white-space: nowrap;    /* Prevents the text inside the button from breaking */
-  font-size: 14px;        /* Slightly smaller font helps fit everything */
-}
-
-
-
+/* Responsive adjustments for very small screens */
+@media (max-width: 480px) {
+    .navbar { padding: 1rem 3%; }
+    .nav-links a { padding: 6px 10px; font-size: 0.75rem; }
+                 }
+             
