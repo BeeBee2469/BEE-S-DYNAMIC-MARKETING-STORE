@@ -119,19 +119,27 @@ body {
 .about-page { background-color: blue; }
 .contact-page { background-color: blue; }
 
-.nav-button {
-  text-decoration: none;
-  color: white;
-  background-color: #007BFF; /* Primary blue */
-  padding: 10px 20px;
-  margin: 5px;
-  border-radius: 8px; /* Rounded corners */
-  display: inline-block;
-  transition: background 0.3s ease;
-}
-
 .nav-button:hover {
   background-color: #0056b3; /* Darkens when you hover */
            }
-    
+    .nav-menu {
+  display: flex;          /* Lines buttons up in a row */
+  flex-wrap: wrap;       /* IMPORTANT: Allows buttons to move to a new line if they don't fit */
+  justify-content: center; /* Centers the buttons on the screen */
+  gap: 10px;             /* This controls the space between buttons (Change this number!) */
+  padding: 10px;
+}
+
+.nav-button {
+  text-decoration: none;
+  color: white;
+  background-color: #007BFF;
+  padding: 8px 15px;     /* Reduced padding to make buttons smaller */
+  border-radius: 8px;
+  display: inline-block;
+  white-space: nowrap;    /* Prevents the text inside the button from breaking */
+  font-size: 14px;        /* Slightly smaller font helps fit everything */
+}
+
+
 
