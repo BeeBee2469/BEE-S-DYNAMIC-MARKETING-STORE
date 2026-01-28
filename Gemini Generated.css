@@ -116,5 +116,6 @@ body {
 
 .add-to-cart:hover { background: var(--primary); color: white; }
 
-.about-page { background-color: lightblue; }
-.contact-page { background-color: lightgrey; }
+.about-page { background-color: blue; }
+.contact-page { background-color: dark-blue; }
+
